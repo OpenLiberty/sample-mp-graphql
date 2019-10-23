@@ -7,3 +7,31 @@ To run, clone this repository, and then run:
 
 Then browse to:
 http://localhost:9080/mpGraphQLSample/graphiql.html
+
+Then try a query like:
+```
+{
+    currentConditions(location: "Paris") {
+        dayTime
+        hasPrecipitation
+        temperatureF
+        weatherText
+        precipitationType
+    }
+}
+```
+
+You should see results similar to (but with random values):
+```
+{
+  "data": {
+    "currentConditions": {
+      "dayTime": true,
+      "hasPrecipitation": true,
+      "temperatureF": 8.796591509601903,
+      "weatherText": "Overcast",
+      "precipitationType": "SNOW"
+    }
+  }
+}
+```

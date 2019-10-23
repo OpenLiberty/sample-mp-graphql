@@ -60,53 +60,16 @@
             <artifactId>liberty-maven-plugin</artifactId>
             <version>${openliberty.maven.version}</version>
             <extensions>true</extensions>
-            <executions>
-              <execution>
-                <id>install-server</id>
-                <phase>pre-integration-test</phase>
-                <goals>
-                  <goal>install-server</goal>
-                </goals>
-                <configuration>
-                  <install>
-                    <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2019-10-23_1229/openliberty-all-19.0.0.11-cl191120191023-1229.zip</runtimeUrl>
-                  </install>
-                </configuration>
-              </execution>
-            </executions>
-            <!--
-            <executions>
-              <execution>
-                <id>package-server</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>create-server</goal>
-                  <goal>install-apps</goal>
-                  <goal>package-server</goal>
-                </goals>
-                <configuration>
-                  <outputDirectory>target/wlp-package</outputDirectory>
-                </configuration>
-              </execution>
-            </executions>
-            -->
             <configuration>
-              <!--
-              <assemblyArtifact>
-                <groupId>io.openliberty</groupId>
-                <artifactId>openliberty-runtime</artifactId>
-                <version>${openliberty.version}</version>
-                <type>zip</type>
-              </assemblyArtifact>
-              <configFile>target/classes/config/server.xml</configFile>
-              <appArchive>${project.build.directory}/${project.artifactId}.war</appArchive>
-              <packageFile>${project.build.directory}/${project.artifactId}.jar</packageFile>
-              <include>runnable</include>
-              <serverName>${project.artifactId}</serverName>
-              <installAppPackages>project</installAppPackages>
-              <configDirectory>${project.basedir}/src/main/liberty/server</configDirectory>
-              -->
-              <!-- installDirectory>/tmp/ibm/wlp</installDirectory -->
+              <install>
+                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2019-10-23_1229/openliberty-all-19.0.0.11-cl191120191023-1229.zip</runtimeUrl>
+              </install>
+              <bootstrapProperties>
+                <httpPort>9080</httpPort>
+                <httpsPort>9443</httpsPort>
+                <traceSpec>*=info</traceSpec>
+                <sampleAppName>${project.build.finalName}</sampleAppName>
+              </bootstrapProperties>
               <serverName>mpGraphQLSample</serverName>
               <features>
                 <acceptLicense>true</acceptLicense>
@@ -118,11 +81,6 @@
           </plugin>
         </plugins>
       </build>
-      <properties>
-        <httpsPort>9443</httpsPort>
-        <httpPort>9080</httpPort>
-        <traceSpec>*=info</traceSpec>
-      </properties>
     </profile>
   </profiles>
 </project>

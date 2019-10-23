@@ -1,7 +1,7 @@
 <server>
   <featureManager>
     <feature>mpGraphQL-1.0</feature>
-    <feature>mpMetrics-2.0</feature>
+    <!-- feature>mpMetrics-2.0</feature -->
   </featureManager>
 
   <mpMetrics authentication="false"/>
@@ -10,7 +10,7 @@
                 httpPort="${httpPort}"
                 httpsPort="${httpsPort}"/>
 
-  <application location="${project.build.finalName}.war"/>
+  <application location="${sampleAppName}.war"/>
 
   <logging traceSpecification="${traceSpec}" maxFiles="1" />
 </server>
