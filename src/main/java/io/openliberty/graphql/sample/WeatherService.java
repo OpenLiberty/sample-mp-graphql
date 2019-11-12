@@ -11,7 +11,6 @@
 
 package io.openliberty.graphql.sample;
 
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
