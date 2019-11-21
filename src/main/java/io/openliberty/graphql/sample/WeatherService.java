@@ -14,8 +14,8 @@ package io.openliberty.graphql.sample;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.microprofile.graphql.Argument;
 import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.Query;
 
 @GraphQLApi
@@ -24,7 +24,7 @@ public class WeatherService {
     Map<String, Conditions> currentConditionsMap = new HashMap<>();
 
     @Query
-    public Conditions currentConditions(@Argument("location") String location) {
+    public Conditions currentConditions(@Name("location") String location) {
         return currentConditionsMap.computeIfAbsent(location, this::randomWeatherConditions);
     }
 

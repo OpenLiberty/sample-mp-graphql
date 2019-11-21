@@ -24,7 +24,7 @@
     <dependency>
       <groupId>org.eclipse.microprofile.graphql</groupId>
       <artifactId>microprofile-graphql-api</artifactId>
-      <version>1.0-M4</version>
+      <version>1.0-M5</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -62,7 +62,7 @@
             <extensions>true</extensions>
             <configuration>
               <install>
-                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2019-11-11_1900/openliberty-all-19.0.0.12-cl191220191111-1900.zip</runtimeUrl>
+                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2019-11-21_0932/openliberty-all-19.0.0.12-cl200120191121-0932.zip</runtimeUrl>
               </install>
               <bootstrapProperties>
                 <httpPort>9080</httpPort>
