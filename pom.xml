@@ -62,7 +62,7 @@
             <extensions>true</extensions>
             <configuration>
               <install>
-                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2019-11-21_0932/openliberty-all-19.0.0.12-cl200120191121-0932.zip</runtimeUrl>
+                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2020-02-07_0820/openliberty-all-20.0.0.2-cl200320200207-0820.zip</runtimeUrl>
               </install>
               <bootstrapProperties>
                 <httpPort>9080</httpPort>
