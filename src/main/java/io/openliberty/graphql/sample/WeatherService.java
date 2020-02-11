@@ -12,9 +12,12 @@
 package io.openliberty.graphql.sample;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.microprofile.graphql.GraphQLApi;
+import org.eclipse.microprofile.graphql.GraphQLException;
 import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.Query;
 
@@ -24,12 +27,30 @@ public class WeatherService {
     Map<String, Conditions> currentConditionsMap = new HashMap<>();
 
     @Query
-    public Conditions currentConditions(@Name("location") String location) {
+    public Conditions currentConditions(@Name("location") String location) throws UnknownLocationException {
+        if ("nowhere".equalsIgnoreCase(location)) {
+            throw new UnknownLocationException(location);
+        }
         return currentConditionsMap.computeIfAbsent(location, this::randomWeatherConditions);
     }
 
+    @Query
+    public List<Conditions> currentConditionsList(@Name("locations") List<String> locations)
+        throws UnknownLocationException, GraphQLException {
+
+        List<Conditions> allConditions = new LinkedList<>();
+        for (String location : locations) {
+            try {
+                allConditions.add(currentConditions(location));
+            } catch (UnknownLocationException ule) {
+                throw new GraphQLException(ule, allConditions);
+            }
+        }
+        return allConditions;
+    }
+
     private Conditions randomWeatherConditions(String location) {
-        Conditions c = new Conditions();
+        Conditions c = new Conditions(location);
         c.setDayTime(Math.random() > 0.5);
         c.setTemperatureF(Math.random() * 100);
         c.setTemperatureC( (c.getTemperatureF() - 30) / 2 );

@@ -16,6 +16,7 @@ import java.time.ZoneOffset;
 
 public class Conditions {
 
+    private final String location;
     private final LocalDateTime localObservationDateTime = LocalDateTime.now();
     private String weatherText;
     private boolean hasPrecipitation;
@@ -23,6 +24,14 @@ public class Conditions {
     private boolean dayTime;
     private double temperatureC;
     private double temperatureF;
+
+    public Conditions(String location) {
+        this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
 
     public LocalDateTime getLocalObservationDateTime() {
         return localObservationDateTime;
