@@ -16,10 +16,13 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.GraphQLException;
+import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.Query;
+import org.eclipse.microprofile.graphql.Source;
 
 @GraphQLApi
 public class WeatherService {
@@ -47,6 +50,22 @@ public class WeatherService {
             }
         }
         return allConditions;
+    }
+
+    @Mutation
+    @Description("Reset the cached conditions so that new queries will return newly randomized weather data." +
+                 "Returns number of entries cleared.")
+    public int reset() {
+        int cleared = currentConditionsMap.size();
+        currentConditionsMap.clear();
+        return cleared;
+    }
+
+    @Query
+    public double wetBulbTempF(@Source @Name("conditions") Conditions conditions) {
+        // TODO: pretend like this is a really expensive operation
+        System.out.println("wetBulbTempF for location " + conditions.getLocation());
+        return conditions.getTemperatureF() - 3.0;
     }
 
     private Conditions randomWeatherConditions(String location) {
