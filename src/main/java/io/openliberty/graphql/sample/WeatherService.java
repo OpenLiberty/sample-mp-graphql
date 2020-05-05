@@ -16,6 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.enterprise.context.ApplicationScoped;
+
 import org.eclipse.microprofile.graphql.Description;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.GraphQLException;
@@ -25,6 +27,7 @@ import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Source;
 
 @GraphQLApi
+@ApplicationScoped
 public class WeatherService {
 
     Map<String, Conditions> currentConditionsMap = new HashMap<>();
@@ -61,7 +64,6 @@ public class WeatherService {
         return cleared;
     }
 
-    @Query
     public double wetBulbTempF(@Source @Name("conditions") Conditions conditions) {
         // TODO: pretend like this is a really expensive operation
         System.out.println("wetBulbTempF for location " + conditions.getLocation());
