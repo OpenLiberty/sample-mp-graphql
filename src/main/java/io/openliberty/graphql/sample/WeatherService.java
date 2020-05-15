@@ -16,6 +16,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 
 import org.eclipse.microprofile.graphql.Description;
@@ -32,6 +34,7 @@ public class WeatherService {
 
     Map<String, Conditions> currentConditionsMap = new HashMap<>();
 
+
     @Query
     public Conditions currentConditions(@Name("location") String location) throws UnknownLocationException {
         if ("nowhere".equalsIgnoreCase(location)) {
@@ -40,6 +43,7 @@ public class WeatherService {
         return currentConditionsMap.computeIfAbsent(location, this::randomWeatherConditions);
     }
 
+    @DenyAll
     @Query
     public List<Conditions> currentConditionsList(@Name("locations") List<String> locations)
         throws UnknownLocationException, GraphQLException {
@@ -55,6 +59,7 @@ public class WeatherService {
         return allConditions;
     }
 
+    @RolesAllowed("Role2")
     @Mutation
     @Description("Reset the cached conditions so that new queries will return newly randomized weather data." +
                  "Returns number of entries cleared.")

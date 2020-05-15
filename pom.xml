@@ -27,7 +27,27 @@
       <version>1.0-M5</version>
       <scope>provided</scope>
     </dependency>
-  </dependencies>
+    <dependency>
+        <groupId>io.smallrye</groupId>
+        <artifactId>smallrye-graphql-client</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>io.smallrye</groupId>
+        <artifactId>smallrye-graphql-client-api</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+</dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
   </build>
@@ -62,7 +82,7 @@
             <extensions>true</extensions>
             <configuration>
               <install>
-                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2020-05-05_1100/openliberty-all-20.0.0.5-cl200620200505-1100.zip</runtimeUrl>
+                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2020-05-15_1100/openliberty-all-20.0.0.6-cl200620200515-1100.zip</runtimeUrl>
               </install>
               <bootstrapProperties>
                 <httpPort>9080</httpPort>
