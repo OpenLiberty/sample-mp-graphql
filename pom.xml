@@ -97,6 +97,7 @@
               </features>
               <looseApplication>true</looseApplication>
               <deployPackages>all</deployPackages>
+              <serverStartTimeout>90</serverStartTimeout>
             </configuration>
           </plugin>
         </plugins>
