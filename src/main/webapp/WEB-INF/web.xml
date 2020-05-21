@@ -12,8 +12,6 @@
             <web-resource-name>allResources</web-resource-name>
             <description>Requiring authentication for all resources when appSecurity is enabled</description>
             <url-pattern>/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
         </web-resource-collection>
         <user-data-constraint id="UserDataConstraint_1">
             <transport-guarantee>NONE</transport-guarantee>
@@ -23,15 +21,32 @@
             <role-name>Role2</role-name>
         </auth-constraint>
     </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>GeneralResources</web-resource-name>
+            <url-pattern>/login.html</url-pattern>
+            <http-method>GET</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>AllUsers</role-name>
+        </auth-constraint>
+    </security-constraint>
 
     <login-config>
-        <auth-method>BASIC</auth-method>
-        <realm-name>sample-mp-graphql</realm-name>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.html</form-login-page>
+            <form-error-page>/login.html</form-error-page>
+        </form-login-config>
     </login-config>
+
     <security-role id="SecurityRole_1">
         <role-name>Role1</role-name>
     </security-role>
     <security-role id="SecurityRole_2">
         <role-name>Role2</role-name>
+    </security-role>
+    <security-role id="AllUsers">
+        <role-name>AllUsers</role-name>
     </security-role>
 </web-app>

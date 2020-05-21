@@ -2,8 +2,9 @@
   <featureManager>
     <feature>mpGraphQL-1.0</feature>
     <feature>mpMetrics-2.3</feature>
-    <!-- <feature>jaxrs-2.1</feature> -->
+    <feature>jsp-2.3</feature>
     <!-- <feature>appSecurity-3.0</feature> -->
+    <!-- <feature>jaxrs-2.1</feature> -->
   </featureManager>
 
   <mpMetrics authentication="false"/>
@@ -11,6 +12,18 @@
   <httpEndpoint id="defaultHttpEndpoint"
                 httpPort="${httpPort}"
                 httpsPort="${httpsPort}"/>
+
+
+  <basicRegistry id="basic" realm="sample-mp-graphql">
+     <user name="user1" password="user1pwd" />
+     <user name="user2" password="user2pwd" />
+     <group name="Role1">
+       <member name="user1"/>
+     </group>
+     <group name="Role2">
+       <member name="user2"/>
+     </group>
+   </basicRegistry>
 
   <application location="${sampleAppName}.war"/>
 
