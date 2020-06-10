@@ -81,9 +81,6 @@
             <version>${openliberty.maven.version}</version>
             <extensions>true</extensions>
             <configuration>
-              <install>
-                <runtimeUrl>https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2020-06-03_1101/openliberty-all-20.0.0.7-cl200720200603-1101.zip</runtimeUrl>
-              </install>
               <bootstrapProperties>
                 <httpPort>9080</httpPort>
                 <httpsPort>9443</httpsPort>
