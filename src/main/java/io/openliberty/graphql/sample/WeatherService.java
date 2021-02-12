@@ -1,5 +1,5 @@
 // ******************************************************************************
-//  Copyright (c) 2019 IBM Corporation and others.
+//  Copyright (c) 2019, 2021 IBM Corporation and others.
 //  All rights reserved. This program and the accompanying materials
 //  are made available under the terms of the Eclipse Public License v1.0
 //  which accompanies this distribution, and is available at
@@ -83,6 +83,9 @@ public class WeatherService {
         c.setHasPrecipitation(Math.random() > 0.7);
         c.setPrecipitationType(c.isHasPrecipitation() ? PrecipType.fromTempF(c.getTemperatureF()) : null);
         c.setWeatherText(c.isHasPrecipitation() ? "Overcast" : "Sunny");
+        double windSpeed = Math.random() * 50;
+        Wind wind = new Wind((int)(Math.random() * 360), windSpeed, windSpeed + (Math.random() * 50));
+        c.setWind(wind);
         return c;
     }
 }

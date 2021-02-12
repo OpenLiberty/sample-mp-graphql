@@ -1,5 +1,5 @@
 // ******************************************************************************
-//  Copyright (c) 2019 IBM Corporation and others.
+//  Copyright (c) 2019, 2021 IBM Corporation and others.
 //  All rights reserved. This program and the accompanying materials
 //  are made available under the terms of the Eclipse Public License v1.0
 //  which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ public class Conditions {
     private boolean dayTime;
     private double temperatureC;
     private double temperatureF;
+    private Wind wind;
 
     public Conditions(String location) {
         this.location = location;
@@ -87,6 +88,14 @@ public class Conditions {
 
     public void setTemperatureF(double temperatureF) {
         this.temperatureF = temperatureF;
+    }
+
+    public Wind getWind() {
+        return wind;
+    }
+
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 
 }
